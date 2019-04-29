@@ -1,0 +1,125 @@
+/*********************************************************/
+/*********************************************************/
+/*********************************************************/
+/*********************************************************/
+
+#include <iostream>
+#include <cstring>
+#include <cstdio>
+#include <cmath>
+
+using namespace std;
+int a[105],b[105];
+int c[100000];
+char s1[105],s2[105];
+void changea(char ss[])
+{
+    for(int i=0;i<strlen(ss);i++)
+    {
+        a[i]=ss[strlen(ss)-i-1]-'0';
+        //cout<<a[i]<<endl;
+    }
+}
+void changeb(char ss[])
+{
+    for(int i=0;i<strlen(ss);i++)
+    {
+        b[strlen(ss)-i-1]=ss[i]-'0';
+        //cout<<b[i]<<endl;
+    }
+}
+void  cj(int x,int y)
+{
+    int g=0;
+    for(int i=0;i<x;i++)
+    {
+        int s=0;
+         for(int j=0;j<y;j++)
+        {
+            c[i+j]+=a[i]*b[j]+s;
+             s=c[i+j]/10;
+            c[i+j]=c[i+j]%10;
+
+        }
+        c[i+y]=s;
+    }
+      /*int i;
+    for( i=0;i<x+y;i++)
+    {
+        if(c[i]>10)
+        {
+            c[i+1]+=c[i]/10;
+            c[i]=c[i]%10;
+        }
+    }*/
+}
+int main()
+{
+     while(scanf("%s%s",s1,s2)!=EOF)
+    {
+        memset(a,0,sizeof(a));
+        memset(b,0,sizeof(b));
+        memset(c,0,sizeof(c));
+        int lena=0,lenb=0,g=0;
+
+        lena=strlen(s1);
+        changea(s1);
+        lenb=strlen(s2);
+        changeb(s2);
+        cj(lena,lenb);
+        for(int i=lena+lenb;i>=0;i--)
+        {
+            if(c[i])
+            {
+                g=i;
+                break;
+            }
+        }
+        for(int i=g;i>=0;i--)
+        {
+            cout<<c[i];
+        }
+        cout<<endl;
+    }
+        return 0;
+}
+
+/*
+#include<iostream>
+#include<cstring>
+using namespace std;
+
+char num_1[101],num_2[101];
+int Num_1[101],Num_2[101],Sum[10001];
+
+int main(){
+    while(cin>>num_1>>num_2){
+    memset(Sum,0,sizeof(Sum));
+    int length_1 = strlen(num_1);
+    int length_2 = strlen(num_2);
+    for(int i=0;i<length_1;i++)
+        Num_1[length_1-i-1] = num_1[i]-48;
+    for(int i=0;i<length_2;i++)
+        Num_2[length_2-i-1] = num_2[i]-48;
+    for(int i=0;i<length_1;i++)
+    {
+        int x=0;
+        for(int j=0;j<length_2;j++){
+            Sum[i+j] = Num_1[i]*Num_2[j]+x+Sum[i+j];
+            x=Sum[i+j]/10;
+            Sum[i+j] = Sum[i+j]%10;
+        }
+        Sum[i+length_2] = x;
+    }
+    int length_3 = length_1 + length_2;
+    while(Sum[length_3]==0&&length_3>0){
+        length_3--;
+    }
+    for(int i=length_3;i>=0;i--)
+        cout<<Sum[i];
+        cout<<endl;
+
+    }
+
+}
+*/
