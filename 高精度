@@ -178,3 +178,40 @@ int main()
 
 
 
+/**************************************************************/
+/************求n的累加和****************************************/
+/***************有点类似于高精度乘上单精度************************/
+/*
+#include <iostream>
+#include <cstring>
+#include <cmath>
+#include <cstdio>
+
+using namespace std;
+int b[1000];
+int main()
+{
+    long long n;
+    scanf("%lld",&n);
+    for(long long i=1;i<=n;i++)
+    {
+        b[1]+=i;
+        for(int j=1;j<1000;j++)
+        {
+            b[j+1]+=(b[j]/10);
+            b[j]=b[j]%10;
+            if(b[j+1]<10)break;
+        }
+    }
+    int i;
+    for(i=1000;i>0;i--)
+        if(b[i])break;
+    for(int j=i;j>=1;j--)
+    {
+        printf("%d",b[j]);
+    }
+    return 0;
+}
+*/
+
+
