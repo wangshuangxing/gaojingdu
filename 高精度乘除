@@ -41,7 +41,7 @@ void  cj(int x,int y)
             c[i+j]=c[i+j]%10;
 
         }
-        c[i+y]=s;
+        c[i+y]=s;/**********觉得之前的方法没错啊，不理解明天补回来****/
     }
       /*int i;
     for( i=0;i<x+y;i++)
